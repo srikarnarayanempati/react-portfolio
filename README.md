@@ -35,7 +35,7 @@ This portfolio is where design meets performance — pixel-perfect, mobile-first
 ## 🚀 How to Run Locally
 
 ```bash
-git clone https://github.com/srikarnarayanempati/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/srikarnarayanempati/react-portfolio.git
+cd react-portfolio
 npm install
 npm run dev
