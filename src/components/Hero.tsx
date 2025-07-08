@@ -63,9 +63,8 @@ const Hero: React.FC = () => {
                   Frontend Developer & Data Enthusiast
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-bricolage">
-                Passionate about creating beautiful, intuitive user experiences with clean Frontend design. 
-                Currently exploring the data side with Python, SQL, and MySQL.
+              <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-bricolage"> 
+               "I am your friendly neighbourhood coder — A front-end dev by day, and a video editor by night. I design with purpose, build with precision, and always stay curious (no radioactive spider needed)."
               </p>
             </div>
 

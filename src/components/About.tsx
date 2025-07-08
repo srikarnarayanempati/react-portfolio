@@ -48,8 +48,8 @@ const About: React.FC = () => {
             About <span className="text-custom-red">Me</span>
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto font-bricolage">
-            "I am your friendly neighbourhood coder — A front-end dev by day, and an video editor by night. I design with purpose, build with precision, and always stay curious (no radioactive spider needed)."
-          </p>
+            Passionate about creating beautiful, intuitive user experiences with clean Frontend design. 
+            Currently exploring the data side with Python, SQL, and MySQL.          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -58,7 +58,7 @@ const About: React.FC = () => {
             <TiltedCard
               imageSrc={me}
               altText="Profile Picture"
-              captionText="Hi, I'm Srikar Empati"
+              captionText="Yeah! That's me"
               containerHeight="auto"
               containerWidth="100%"
               imageHeight="300px"
