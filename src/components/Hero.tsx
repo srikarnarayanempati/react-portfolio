@@ -1,5 +1,8 @@
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Instagram, Code, Zap, Star } from 'lucide-react';
+import RippleGrid from './RippleGrid'; // ✅ adjust path if needed
+import '@dotlottie/player-component'; // if you're using the official package
+
 
 const Hero: React.FC = () => {
   const scrollToProjects = () => {
@@ -27,8 +30,14 @@ const Hero: React.FC = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-64 h-64 bg-custom-red/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-32 right-32 w-96 h-96 bg-custom-blue-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-custom-orange/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-32 right-32 w-96 h-96 bg-custom-blue-accent/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '1s' }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/2 w-48 h-48 bg-custom-orange/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '2s' }}
+        ></div>
       </div>
 
       {/* Animated React Components */}
@@ -41,6 +50,20 @@ const Hero: React.FC = () => {
         <Star className="absolute bottom-60 left-1/4 text-custom-blue-accent/40 animate-pulse-slow" size={20} />
       </div>
 
+      {/* ✅ Ripple Grid Overlay */}
+      <div className="absolute inset-0 z-[1] translate-x-20">
+        <RippleGrid
+          enableRainbow={false}
+          gridColor="#7B1E1E"
+          rippleIntensity={0.05}
+          gridSize={15}
+          gridThickness={15}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.2}
+          opacity={0.4}
+        />
+      </div>
+
       {/* Wave background */}
       <div className="absolute bottom-0 left-0 right-0 !m-0 !p-0">
         <svg viewBox="0 0 1200 120" fill="none" className="w-full h-24">
@@ -48,13 +71,12 @@ const Hero: React.FC = () => {
         </svg>
       </div>
 
+      {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
         <div className="w-full">
           <div className="text-center lg:text-left">
             <div className="animate-slide-in">
-              <h2 className="text-custom-orange font-gochi text-xl md:text-2xl mb-4">
-                Hello! I'm 
-              </h2>
+              <h2 className="text-custom-orange font-gochi text-xl md:text-2xl mb-4">Hello! I'm</h2>
               <h1 className="mb-6">
                 <span className="block text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg font-bricolage">
                   Srikar Empati
@@ -63,8 +85,9 @@ const Hero: React.FC = () => {
                   Frontend Developer & Data Enthusiast
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-bricolage"> 
-               "I am your friendly neighbourhood coder — A front-end dev by day, and a video editor by night. I design with purpose, build with precision, and always stay curious (no radioactive spider needed)."
+              <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-bricolage">
+                "I am your friendly neighbourhood coder — A front-end dev by day, and a video editor by night. I design
+                with purpose, build with precision, and always stay curious (no radioactive spider needed)."
               </p>
             </div>
 
@@ -90,39 +113,39 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="flex justify-center lg:justify-start space-x-6 animate-fade-in">
-              <a href="https://github.com/srikarnarayanempati" className="text-gray-400 hover:text-custom-red transition-colors duration-200 hover:scale-110 transform">
+              <a
+                href="https://github.com/srikarnarayanempati"
+                className="text-gray-400 hover:text-custom-red transition-colors duration-200 hover:scale-110 transform"
+              >
                 <Github size={24} />
               </a>
-              <a href="https://www.linkedin.com/in/srikar-empati-32bb002ba" className="text-gray-400 hover:text-custom-red transition-colors duration-200 hover:scale-110 transform">
+              <a
+                href="https://www.linkedin.com/in/srikar-empati-32bb002ba"
+                className="text-gray-400 hover:text-custom-red transition-colors duration-200 hover:scale-110 transform"
+              >
                 <Linkedin size={24} />
               </a>
-              <a href="https://www.instagram.com/srikar.empati" className="text-gray-400 hover:text-custom-red transition-colors duration-200 hover:scale-110 transform">
+              <a
+                href="https://www.instagram.com/srikar.empati"
+                className="text-gray-400 hover:text-custom-red transition-colors duration-200 hover:scale-110 transform"
+              >
                 <Instagram size={24} />
               </a>
             </div>
           </div>
 
-          <div className="hidden lg:block absolute right-0 bottom-0 z-[1]">
-          <img
-            src="/hero.png"
-            alt="Hero image"
-            className="
-              h-[100vh]
-              object-contain
-              opacity-95
-              pointer-events-none
-              drop-shadow-[0_0_30px_rgba(255,30,30,0.4)]
-              rounded-xl
-              transition-transform 
-              duration-300 
-              ease-in-out 
-              hover:scale-105
-            "
-          />
+          {/* Hero Lottie Animation (Desktop only) */}
+          <div className="hidden lg:block absolute top-0 right-0 z-[1] w-[700px] h-[400px] opacity-90 pointer-events-none translate-x-28"
+           style={{ animation: 'fadeIn 2s ease-in-out' }}>
+            <dotlottie-player
+              src="https://lottie.host/5d087a66-ab25-4318-b79a-6cf6010ead03/HHx7JkwTPl.lottie"
+              autoplay
+              loop
+              speed="1"
+              style={{ width: '100%',
+                      height: '100%', }}
+            />
           </div>
-
-
-
         </div>
       </div>
     </section>
