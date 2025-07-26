@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Instagram, Code, Zap, Star } from 'lucide-react';
-import RippleGrid from './RippleGrid'; // ✅ adjust path if needed
-import '@dotlottie/player-component'; // if you're using the official package
+import RippleGrid from './RippleGrid';
+import '@dotlottie/player-component'; 
 
 
 const Hero: React.FC = () => {
@@ -46,11 +46,11 @@ const Hero: React.FC = () => {
         <Zap className="absolute bottom-40 left-10 text-custom-orange/40 animate-pulse-slow" size={32} />
         <Star className="absolute top-40 left-1/3 text-custom-blue-accent/50 animate-wiggle" size={24} />
         <Code className="absolute bottom-20 right-1/4 text-custom-red-light/30 animate-bounce-slow" size={28} />
-        <Zap className="absolute top-60 right-1/3 text-custom-orange/30 animate-float" size={36} />
+        <Zap className="absolute bottom-20 right-12 text-custom-orange/30 animate-float" size={36} />
         <Star className="absolute bottom-60 left-1/4 text-custom-blue-accent/40 animate-pulse-slow" size={20} />
       </div>
 
-      {/* ✅ Ripple Grid Overlay */}
+      {/* Ripple Grid Overlay */}
       <div className="absolute inset-0 z-[1] translate-x-20">
         <RippleGrid
           enableRainbow={false}
@@ -64,10 +64,17 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Wave background */}
-      <div className="absolute bottom-0 left-0 right-0 !m-0 !p-0">
-        <svg viewBox="0 0 1200 120" fill="none" className="w-full h-24">
-          <path d="M0,60 Q300,0 600,60 T1200,60 V120 H0 Z" fill="rgba(255,30,30,0.1)" />
+      {/* Wave at Bottom */}
+      <div className="absolute bottom-0 left-0 w-full z-20 pointer-events-none">
+        <svg
+          viewBox="0 0 1200 120"
+          className="w-full h-24"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,60 Q300,0 600,60 T1200,60 V120 H0 Z"
+            fill="rgba(255,30,30,0.1)"
+          />
         </svg>
       </div>
 

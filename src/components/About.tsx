@@ -1,12 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Code, Database, Brain, Wrench } from 'lucide-react';
-import me from '../assets/me.jpg'; 
+import me from '../assets/me.png'; 
 import TiltedCard from './TiltedCard';
-import ScrambledText from './ScrambledText';
 import ScrollVelocity from './ScrollVelocity';
 import SpotlightCard from './SpotlightCard';
 
 const About: React.FC = () => {
+  const navigate = useNavigate();
+
   const skills = [
     {
       category: 'Frontend',
@@ -45,7 +47,7 @@ const About: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-instrument-sans">
-            About <span className="text-custom-red">Me</span>
+            Quick View of <span className="text-custom-red">Me</span>
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto font-bricolage">
             Passionate about creating beautiful, intuitive user experiences with clean Frontend design. 
@@ -111,24 +113,18 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-center">
-          <div className="max-w-4xl mx-auto p-8 rounded-2xl backdrop-blur-lg bg-white/5 border border-white/10">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-instrument-sans">
-            My<span className="text-custom-red"> Journey</span>
-            </h2>
-            <ScrambledText
-              className="text-gray-300 text-lg leading-relaxed !m-0 !p-0"
-              duration={1.4}
-              speed={0.6}
-              scrambleChars=".:"
-            >
-              While I'm still building my professional experience, I'm deeply committed to mastering both 
-              frontend development and data analytics. I believe the combination of beautiful UI/UX design 
-              and data-driven insights creates powerful digital experiences. I'm actively working on 
-              projects that showcase these skills and always eager to learn new technologies.
-            </ScrambledText>
-          </div>
-        </div>
+      <div className="mt-8 flex justify-center">
+              <button
+                onClick={() => navigate('/about-details')}
+                className="group relative px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 animate-glow"
+              >
+                <span className="relative z-10 flex items-center justify-center">
+                  Want More About Me
+                  <Code className="ml-2 group-hover:rotate-12 transition-transform" size={20} />
+                </span>
+              </button>
+      </div>
+
       </div>
       <hr className='my-8'></hr>
       <div className='w-screen overflow-hidden !m-0 !p-0'>

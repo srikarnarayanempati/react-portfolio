@@ -19,7 +19,9 @@ body {
 html, body {
   overflow-y: scroll;             
   scrollbar-width: none;         
-  -ms-overflow-style: none;      
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;    
 }
 
 html::-webkit-scrollbar,
@@ -27,8 +29,6 @@ body::-webkit-scrollbar {
   display: none;                 
 }
 
-
-/* Glassmorphism utilities */
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -41,7 +41,6 @@ body::-webkit-scrollbar {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
