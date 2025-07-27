@@ -94,32 +94,32 @@ const AboutDetails: React.FC = () => {
 
   const timelineEvents = [
     {
-      year: '2024',
-      title: 'Started Data Science Journey',
-      description: 'Began exploring Python, SQL, and data analysis to complement my frontend skills.',
-      icon: Database,
-      color: 'from-custom-blue to-custom-blue-accent'
+      year: '2023',
+      title: 'Frontend Development Start',
+      description: 'Began my journey in web development with HTML, CSS, and JavaScript.',
+      icon: Brain,
+      color: 'from-custom-blue-light to-custom-blue-accent'
     },
     {
-      year: '2023',
-      title: 'Advanced React Development',
+      year: '2024',
+      title: 'React Development',
       description: 'Mastered React hooks, state management, and modern development practices.',
       icon: Code,
       color: 'from-custom-red to-custom-red-light'
     },
     {
-      year: '2023',
-      title: 'UI/UX Design Focus',
-      description: 'Developed strong design skills with focus on user experience and modern interfaces.',
-      icon: Palette,
-      color: 'from-custom-orange to-custom-red'
+      year: '2024',
+      title: 'Started Data Analysis Journey',
+      description: 'Began exploring Python, SQL, and data analysis to complement my frontend skills.',
+      icon: Database,
+      color: 'from-custom-blue to-custom-blue-accent'
     },
     {
-      year: '2022',
-      title: 'Frontend Development Start',
-      description: 'Began my journey in web development with HTML, CSS, and JavaScript.',
-      icon: Brain,
-      color: 'from-custom-blue-light to-custom-blue-accent'
+      year: '2025',
+      title: 'DSA Skills Focus',
+      description: 'Developing strong problem-solving skills with a focus on data structures and algorithms.',
+      icon: Palette,
+      color: 'from-custom-orange to-custom-red'
     }
   ];
 
@@ -356,7 +356,7 @@ const AboutDetails: React.FC = () => {
                   <Database size={24} className="text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white font-instrument-sans">
-                  Data Science
+                  Data Analysis
                 </h3>
               </div>
               <p className="text-gray-300 font-bricolage">

@@ -20,9 +20,7 @@ const Footer: React.FC = () => {
           © 2025 Srikar Empati. All rights reserved.
         </p>
 
-        <p className="text-gray-500 text-xs font-gochi mt-2">
-          "Keep coding, keep creating, keep dreaming! ✨"
-        </p>
+
       </div>
 
       <div className="absolute bottom-[-30px] sm:bottom-[-40px] md:bottom-[-60px] left-0 z-0 w-full overflow-hidden">
