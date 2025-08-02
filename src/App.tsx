@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,6 +7,8 @@ import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AboutDetails from './components/AboutDetails';
+import AllProjects from './components/AllProjects';
+
 
 function App() {
   return (
@@ -33,6 +34,18 @@ function App() {
           <div className="min-h-screen bg-custom-black">
             <Navigation />
             <AboutDetails />
+            <Footer />
+          </div>
+        }
+      />
+
+      <Route
+        path="/all-projects"
+        element={
+          <div className="min-h-screen bg-custom-black">
+            <Navigation />
+            <AllProjects />
+            <Footer />
           </div>
         }
       />
@@ -41,3 +54,5 @@ function App() {
 }
 
 export default App;
+
+
