@@ -7,6 +7,7 @@ import TrackerImg from '../assets/tracker preview.png';
 import rockPaperScissorsImg from '../assets/rock-paper-scissors preview.png';
 import portfolioImg from '../assets/portfolio preview.png';
 import ValentinesImg from '../assets/valentine preview.png';
+import UserImg from '../assets/username preview.png';
 
 export type Project = {
   title: string;
@@ -20,6 +21,16 @@ export type Project = {
 };
 
 const allProjectsData: Project[] = [
+    {
+    title: 'Username Generator',
+    description: 'A web-based username generator built using Python , Flask and HTML , CSS .',
+    image: UserImg,
+    tech: ['Python', 'Flask', 'HTML', 'CSS','Google Fonts'],
+    category: 'Python',
+    color: 'from-indigo-600 to-blue-400',
+    link: 'https://username-generator-nhlg.onrender.com/',
+    github: 'https://github.com/srikarnarayanempati/Username-Generator'
+  },
   {
     title: 'ATS Score Generator',
     description: 'A frontend tool to check the ATS Score of user resumes against job descriptions.',
