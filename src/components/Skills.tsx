@@ -17,91 +17,48 @@ const Skills: React.FC = () => {
   }, []);
 
   useLayoutEffect(() => {
+    // Only run animations on desktop to avoid mobile performance issues
+    if (isMobile) return;
+
     const ctx = gsap.context(() => {
-      // Page entrance animation
+      // Simple entrance animation without scroll triggers
       gsap.fromTo(containerRef.current, 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
       );
 
-      // Title animation
+      // Simple title animation
       gsap.fromTo(titleRef.current,
-        { opacity: 0, y: -30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", delay: 0.2 }
       );
 
-      // Grid animation with stagger
+      // Simple grid animation
       gsap.fromTo(gridRef.current,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.4 }
       );
 
-      // Individual card animations
+      // Individual card animations (simplified)
       const cards = gridRef.current?.querySelectorAll('.tech-card');
       if (cards) {
         gsap.fromTo(cards,
-          { 
-            opacity: 0, 
-            y: 50, 
-            scale: 0.8,
-            rotationY: 45
-          },
+          { opacity: 0, y: 30, scale: 0.9 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            rotationY: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play none none reverse"
-            }
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 0.6
           }
         );
       }
-
-      // Background elements parallax
-      gsap.to(".parallax-bg", {
-        yPercent: -30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true
-        }
-      });
-
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   React.useEffect(() => {
     const checkMobile = () => {

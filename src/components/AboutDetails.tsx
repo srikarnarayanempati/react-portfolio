@@ -8,15 +8,13 @@ import {
   Database, 
   Palette, 
   Brain, 
-  Award,  
   Target, 
   Heart,
-  Lightbulb,
-  Trophy,
-  Star
+  Lightbulb
 } from 'lucide-react';
 import Skills from './Skills';
 import Timeline from '../components/Timeline';
+import MagicBento from './MagicBento';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,38 +35,65 @@ const AboutDetails: React.FC = () => {
         { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
       );
 
-      // Scroll-triggered animations for sections
-      sectionsRef.current.forEach((section) => {
+      // Check if mobile to reduce animations
+      const isMobile = window.innerWidth <= 768;
+
+      // Scroll-triggered animations for sections (simplified on mobile)
+      sectionsRef.current.forEach((section, index) => {
         if (section) {
-          gsap.fromTo(section,
-            { opacity: 0, y: 60 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse"
+          if (isMobile) {
+            // Simple fade-in for mobile
+            gsap.fromTo(section,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                delay: index * 0.1,
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 90%",
+                  end: "bottom 10%",
+                  toggleActions: "play none none reverse",
+                  once: true // Only trigger once
+                }
               }
-            }
-          );
+            );
+          } else {
+            // Full animation for desktop
+            gsap.fromTo(section,
+              { opacity: 0, y: 60 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 80%",
+                  end: "bottom 20%",
+                  toggleActions: "play none none reverse"
+                }
+              }
+            );
+          }
         }
       });
 
-      // Parallax effect for background elements
-      gsap.to(".parallax-bg", {
-        yPercent: -50,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true
-        }
-      });
+      // Parallax effect for background elements (disabled on mobile)
+      if (!isMobile) {
+        gsap.to(".parallax-bg", {
+          yPercent: -50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      }
 
     }, containerRef);
 
@@ -86,6 +111,7 @@ const AboutDetails: React.FC = () => {
 
   const timelineEvents = [
     {
+      id: 'frontend-2023',
       year: '2023',
       title: 'Frontend Development Start',
       description: 'Began my journey in web development with HTML, CSS, and JavaScript.',
@@ -93,6 +119,7 @@ const AboutDetails: React.FC = () => {
       color: 'from-custom-blue-light to-custom-blue-accent'
     },
     {
+      id: 'react-2024',
       year: '2024',
       title: 'React Development',
       description: 'Mastered React hooks, state management, and modern development practices.',
@@ -100,6 +127,7 @@ const AboutDetails: React.FC = () => {
       color: 'from-custom-red to-custom-red-light'
     },
     {
+      id: 'data-analysis-2024',
       year: '2024',
       title: 'Started Data Analysis Journey',
       description: 'Began exploring Python, SQL, and data analysis to complement my frontend skills.',
@@ -107,6 +135,7 @@ const AboutDetails: React.FC = () => {
       color: 'from-custom-blue to-custom-blue-accent'
     },
     {
+      id: 'dsa-2025',
       year: '2025',
       title: 'DSA Skills Focus',
       description: 'Developing strong problem-solving skills with a focus on data structures and algorithms.',
@@ -122,27 +151,6 @@ const AboutDetails: React.FC = () => {
     { name: 'Design Systems', icon: Palette },
     { name: 'Open Source', icon: Heart },
     { name: 'Tech Innovation', icon: Lightbulb }
-  ];
-
-  const achievements = [
-    {
-      title: 'Full Stack Development',
-      organization: 'Apna College',
-      year: '2025',
-      icon: Trophy
-    },
-    {
-      title: '100+ Problems Solved in Python',
-      organization: 'GeeksforGeeks',
-      year: '2025',
-      icon: Award
-    },
-    {
-      title: '3 Stars in SQL Challenges',
-      organization: 'Hacker Rank',
-      year: '2024',
-      icon: Star
-    }
   ];
 
   return (
@@ -217,7 +225,7 @@ const AboutDetails: React.FC = () => {
       </section>
 
       {/* Skills Section */}
-      <section ref={addToRefs} className="py-16 relative z-10 skills-section">
+      <section className="py-16 relative z-10 skills-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-12 text-center font-instrument-serif">
             Skills & Technologies I Know
@@ -242,28 +250,21 @@ const AboutDetails: React.FC = () => {
       <section ref={addToRefs} className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-12 text-center font-instrument-serif">
-            Education & Achievements
+            This is where I Learn and Cook          
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {achievements.map((achievement) => (
-              <div
-                key={achievement.title}
-                className="p-6 rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 hover:border-custom-red/50 transition-all duration-300 hover:scale-105"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-custom-red to-custom-orange rounded-lg flex items-center justify-center mb-4">
-                  <achievement.icon className="text-white" size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 font-instrument-sans">
-                  {achievement.title}
-                </h3>
-                <p className="text-custom-red font-semibold mb-1 font-bricolage">
-                  {achievement.organization}
-                </p>
-                <p className="text-gray-400 text-sm font-space-mono">
-                  {achievement.year}
-                </p>
-              </div>
-            ))}
+          <div className="flex justify-center">
+            <MagicBento 
+              textAutoHide={true}
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={true}
+              enableMagnetism={true}
+              clickEffect={true}
+              spotlightRadius={300}
+              particleCount={12}
+              glowColor="220, 38, 38"
+            />
           </div>
         </div>
       </section>

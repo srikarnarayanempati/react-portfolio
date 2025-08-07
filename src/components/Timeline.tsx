@@ -6,6 +6,7 @@ import { DivideIcon as LucideIcon } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 interface TimelineEvent {
+  id?: string;
   year: string;
   title: string;
   description: string;
@@ -91,7 +92,7 @@ const Timeline: React.FC<TimelineProps> = ({ events }) => {
       <div className="space-y-12">
         {events.map((event, index) => (
           <div
-            key={event.year}
+            key={event.id || `${event.year}-${index}`}
             ref={addToEventRefs}
             className={`relative flex items-center ${
               index % 2 === 0 ? 'justify-start' : 'justify-end'
