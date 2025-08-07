@@ -29,6 +29,22 @@ body::-webkit-scrollbar {
   display: none;                 
 }
 
+/* Enhanced smooth scroll for About page */
+.about-smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  scroll-snap-type: y proximity;
+}
+
+.about-smooth-scroll * {
+  scroll-snap-align: start;
+}
+
+/* Custom scroll easing for About page */
+.about-smooth-scroll {
+  transition: scroll-behavior 0.3s ease-in-out;
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);

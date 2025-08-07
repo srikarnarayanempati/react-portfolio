@@ -15,7 +15,7 @@ import {
   Trophy,
   Star
 } from 'lucide-react';
-import SkillBar from './SkillBar';
+import Skills from './Skills';
 import Timeline from '../components/Timeline';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,8 +24,8 @@ const AboutDetails: React.FC = () => {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    }, []);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
   const heroRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
 
@@ -81,16 +81,8 @@ const AboutDetails: React.FC = () => {
     }
   };
 
-  const skills = [
-    { name: 'JavaScript/TypeScript', level: 85, color: 'from-custom-orange to-custom-red' },
-    { name: 'React & Next.js', level: 80, color: 'from-custom-blue to-custom-blue-accent' },
-    { name: 'HTML & CSS', level: 90, color: 'from-custom-red to-custom-red-light' },
-    { name: 'Tailwind CSS', level: 85, color: 'from-custom-blue-light to-custom-blue' },
-    { name: 'Python', level: 70, color: 'from-custom-blue-accent to-custom-orange' },
-    { name: 'SQL & MySQL', level: 65, color: 'from-custom-red-light to-custom-orange' },
-    { name: 'Data Analysis', level: 60, color: 'from-custom-blue to-custom-red' },
-    { name: 'UI/UX Design', level: 75, color: 'from-custom-orange to-custom-red-light' }
-  ];
+
+
 
   const timelineEvents = [
     {
@@ -175,10 +167,10 @@ const AboutDetails: React.FC = () => {
           
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-instrument-sans">
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-custom-red via-custom-red-light to-custom-orange">Me</span>
+              So you really want to know about <span className="text-transparent bg-clip-text bg-gradient-to-r from-custom-red via-custom-red-light to-custom-orange">Me</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto font-bricolage">
-              A deep dive into my journey, skills, and passion for creating beautiful digital experiences
+              Okay back to friendly neighbourhood coder !!
             </p>
           </div>
         </div>
@@ -225,21 +217,13 @@ const AboutDetails: React.FC = () => {
       </section>
 
       {/* Skills Section */}
-      <section ref={addToRefs} className="py-16 relative z-10">
+      <section ref={addToRefs} className="py-16 relative z-10 skills-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-12 text-center font-instrument-serif">
-            Skills & Expertise
+            Skills & Technologies I Know
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {skills.map((skill, index) => (
-              <SkillBar
-                key={skill.name}
-                name={skill.name}
-                level={skill.level}
-                color={skill.color}
-                delay={index * 0.1}
-              />
-            ))}
+          <div className="flex justify-center">
+            <Skills />
           </div>
         </div>
       </section>
@@ -248,7 +232,7 @@ const AboutDetails: React.FC = () => {
       <section ref={addToRefs} className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-12 text-center font-instrument-serif">
-            Career Journey
+            This is How I Started
           </h2>
           <Timeline events={timelineEvents} />
         </div>
