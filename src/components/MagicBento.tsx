@@ -669,6 +669,21 @@ const MagicBento: React.FC<BentoProps> = ({
             transform: translateY(-2px);
           }
           
+          @media (max-width: 599px) {
+            .card-responsive {
+              grid-template-columns: 1fr;
+              width: 95%;
+              margin: 0 auto;
+              padding: 1rem;
+            }
+            
+            .card-responsive .card {
+              width: 100%;
+              min-height: 180px;
+              font-size: 1rem;
+            }
+          }
+          
           .card {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -733,21 +748,6 @@ const MagicBento: React.FC<BentoProps> = ({
             line-clamp: 2;
             overflow: hidden;
             text-overflow: ellipsis;
-          }
-          
-          @media (max-width: 599px) {
-            .card-responsive {
-              grid-template-columns: 1fr;
-              width: 95%;
-              margin: 0 auto;
-              padding: 1rem;
-            }
-            
-            .card-responsive .card {
-              width: 100%;
-              min-height: 200px;
-              font-size: 1.1rem;
-            }
           }
         `}
       </style>

@@ -154,7 +154,12 @@ const AboutDetails: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-custom-black relative overflow-hidden">      
+    <div ref={containerRef} className="min-h-screen relative overflow-hidden">      
+      {/* Background - matching Contact.tsx */}
+      <div className="absolute inset-0 bg-gradient-to-b from-custom-navy via-custom-black to-custom-dark">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,30,30,0.1),transparent)]"></div>
+      </div>
+      
       {/* Animated background elements */}
       <div className="absolute inset-0 parallax-bg">
         <div className="absolute top-20 left-20 w-64 h-64 bg-custom-red/10 rounded-full blur-3xl"></div>
