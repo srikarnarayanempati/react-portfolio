@@ -35,11 +35,11 @@ const allProjectsData: Project[] = [
     title: 'ATS Score Generator',
     description: 'A frontend tool to check the ATS Score of user resumes against job descriptions.',
     image: atsImg,
-    tech: ['HTML', 'CSS', 'JavaScript', 'Affinda API','Bootstrap'],
+    tech: ['HTML', 'CSS', 'JavaScript', 'Font Awesome','Bootstrap'],
     category: 'Frontend',
     color: 'from-custom-red to-custom-orange',
     link: 'https://ats-score-generator.vercel.app/',
-    github: 'https://github.com/srikarnarayanempati/ATS-Score-Generator'
+    github: 'https://github.com/srikarnarayanempati/ats-score-generator'
   },
   {
     title: 'Personal Expense Tracker',
