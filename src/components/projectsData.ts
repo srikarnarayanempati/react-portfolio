@@ -8,6 +8,7 @@ import rockPaperScissorsImg from '../assets/rock-paper-scissors preview.png';
 import portfolioImg from '../assets/portfolio preview.png';
 import ValentinesImg from '../assets/valentine preview.png';
 import UserImg from '../assets/username preview.png';
+import lostImg from '../assets/lost preview.png';
 
 export type Project = {
   title: string;
@@ -21,7 +22,17 @@ export type Project = {
 };
 
 const allProjectsData: Project[] = [
-    {
+  {
+    title: 'Lost & Found',
+    description: 'A web application for students to find lost items on campus.',
+    image: lostImg,
+    tech: ['React', 'Vite', 'TailwindCSS', 'Javascript','GSAP'],
+    category: 'Frontend',
+    color: 'from-custom-orange to-custom-red',
+    link: 'https://lost-and-found-things.vercel.app',
+    github: 'https://github.com/srikarnarayanempati/lost-and-found'
+  },
+  {
     title: 'Username Generator',
     description: 'A web-based username generator built using Python , Flask and HTML , CSS .',
     image: UserImg,
@@ -30,6 +41,16 @@ const allProjectsData: Project[] = [
     color: 'from-indigo-600 to-blue-400',
     link: 'https://username-generator-nhlg.onrender.com/',
     github: 'https://github.com/srikarnarayanempati/Username-Generator'
+  },
+  {
+    title: 'Calorie Calculator',
+    description: 'A smart web app to calculate daily calorie needs and suggest foods accordingly.',
+    image: calorieImg,
+    tech: ['JavaScript', 'HTML', 'CSS', 'Bootstrap'],
+    category: 'Frontend',
+    color: 'from-indigo-500 to-purple-500',
+    link: 'https://self-calorie-calculator.vercel.app/',
+    github: 'https://github.com/srikarnarayanempati/Calorie-Calculator'
   },
   {
     title: 'ATS Score Generator',
@@ -50,16 +71,6 @@ const allProjectsData: Project[] = [
     color: 'from-teal-400 to-lime-400',
     link: 'https://expense-tracker-six-bice.vercel.app/',
     github: 'https://github.com/srikarnarayanempati/expense-tracker'
-  },
-  {
-    title: 'Calorie Calculator',
-    description: 'A smart web app to calculate daily calorie needs and suggest foods accordingly.',
-    image: calorieImg,
-    tech: ['JavaScript', 'HTML', 'CSS', 'Bootstrap'],
-    category: 'Frontend',
-    color: 'from-indigo-500 to-purple-500',
-    link: 'https://self-calorie-calculator.vercel.app/',
-    github: 'https://github.com/srikarnarayanempati/Calorie-Calculator'
   },
   {
     title: 'Weather App',
