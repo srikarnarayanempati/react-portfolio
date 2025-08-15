@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, Instagram, Code, Zap, Star } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Instagram } from 'lucide-react';
 import RippleGrid from './RippleGrid';
 import '@dotlottie/player-component'; 
 
@@ -41,14 +41,14 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Animated React Components */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         <Code className="absolute top-20 right-20 text-custom-red/30 animate-spin-slow" size={40} />
         <Zap className="absolute bottom-40 left-10 text-custom-orange/40 animate-pulse-slow" size={32} />
         <Star className="absolute top-40 left-1/3 text-custom-blue-accent/50 animate-wiggle" size={24} />
         <Code className="absolute bottom-20 right-1/4 text-custom-red-light/30 animate-bounce-slow" size={28} />
         <Zap className="absolute bottom-20 right-12 text-custom-orange/30 animate-float" size={36} />
         <Star className="absolute bottom-60 left-1/4 text-custom-blue-accent/40 animate-pulse-slow" size={20} />
-      </div>
+      </div> */}
 
       {/* Ripple Grid Overlay */}
       <div className="absolute inset-0 z-[1] translate-x-20">
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Wave at Bottom */}
-      <div className="absolute bottom-0 left-0 w-full z-20 pointer-events-none">
+      {/* <div className="absolute bottom-0 left-0 w-full z-20 pointer-events-none">
         <svg
           viewBox="0 0 1200 120"
           className="w-full h-24"
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
             fill="rgba(255,30,30,0.1)"
           />
         </svg>
-      </div>
+      </div> */}
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Hero Lottie Animation (Desktop only) */}
-          <div className="hidden lg:block absolute top-0 right-0 z-[1] w-[700px] h-[400px] opacity-90 pointer-events-none translate-x-28"
+          {/* <div className="hidden lg:block absolute top-0 right-0 z-[1] w-[700px] h-[400px] opacity-90 pointer-events-none translate-x-28"
            style={{ animation: 'fadeIn 2s ease-in-out' }}>
             <dotlottie-player
               src="https://lottie.host/5d087a66-ab25-4318-b79a-6cf6010ead03/HHx7JkwTPl.lottie"
@@ -152,7 +152,7 @@ const Hero: React.FC = () => {
               style={{ width: '100%',
                       height: '100%', }}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
