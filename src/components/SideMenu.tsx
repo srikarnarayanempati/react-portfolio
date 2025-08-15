@@ -12,7 +12,6 @@ useEffect(() => {
     const [menuText, closeText] = btnTextRef.current.children as unknown as HTMLElement[];
 
     if (open) {
-      // MENU goes up, CLOSE comes from bottom
       gsap.to(menuText, { y: -20, opacity: 0, duration: 0.3, ease: "power2.inOut" });
       gsap.fromTo(
         closeText,
@@ -20,7 +19,6 @@ useEffect(() => {
         { y: 0, opacity: 1, duration: 0.3, delay: 0.15, ease: "power2.inOut" }
       );
     } else {
-      // CLOSE goes down, MENU comes from top
       gsap.to(closeText, { y: 20, opacity: 0, duration: 0.3, ease: "power2.inOut" });
       gsap.fromTo(
         menuText,
@@ -117,7 +115,7 @@ useEffect(() => {
                 ease: [0.2, 0.9, 0.3, 1],
               },
             }}
-            className="fixed w-[350px] h-[450px] bg-gradient-to-r from-custom-red to-custom-red-light rounded-2xl overflow-hidden z-40 shadow-lg"
+            className="fixed w-[400px] h-[350px] bg-gradient-to-r from-custom-red to-custom-red-light rounded-2xl overflow-hidden z-40 shadow-lg"
             style={{
               transformOrigin: "top right",
               boxShadow: "0 0 30px rgba(255, 0, 0, 0.6), 0 0 50px rgba(255, 100, 100, 0.4)"
@@ -129,7 +127,7 @@ useEffect(() => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.4 } }}
               exit={{ opacity: 0 }}
-              className="p-12 flex flex-col gap-3 font-bold text-3xl md:text-4xl text-white"
+              className="p-12 flex flex-col gap-3 font-bold text-4xl md:text-4xl text-white font-bricolage"
             >
               <a href="#hero" onClick={handleNavClick} className="hover:text-black">
                 HOME

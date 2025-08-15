@@ -34,7 +34,7 @@ const Navigation: React.FC = () => {
             </div>
           </div>
 
-          {/* Side Menu Component - aligned properly within navbar */}
+          {/* Side Menu Component */}
           <div className="flex items-center mt-2">
             <SideMenu />
           </div>
