@@ -63,7 +63,7 @@ useEffect(() => {
           className="absolute font-bold"
           style={{
             color: "#ffffffff",
-            opacity: 1, // visible when menu is open
+            opacity: 1,
           }}
         >
           MENU
@@ -72,7 +72,7 @@ useEffect(() => {
           className="absolute font-bold"
           style={{
             color: "#fff",
-            opacity: 0, // start hidden until GSAP animates it
+            opacity: 0,
           }}
         >
           CLOSE
