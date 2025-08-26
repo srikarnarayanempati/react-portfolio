@@ -7,7 +7,8 @@ import {
   Code, 
   Database, 
   Palette, 
-  Brain, 
+  Brain,
+  Video, 
   Target, 
   Heart,
   Lightbulb
@@ -15,6 +16,7 @@ import {
 import Skills from '../ui/Skills';
 import Timeline from '../ui/Timeline';
 import MagicBento from '../ui/MagicBento';
+import CodeBlock from "../ui/CodeBlock"; // adjust import path
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -145,17 +147,17 @@ const AboutDetails: React.FC = () => {
   ];
 
   const interests = [
-    { name: 'Machine Learning', icon: Brain },
-    { name: 'Data Visualization', icon: Database },
-    { name: 'Web Performance', icon: Target },
+    { name: 'Video Editing', icon: Video },
+    { name: 'Open Source Contribution', icon: Heart },
+    { name: 'Prompt Engineering', icon: Target },
     { name: 'Design Systems', icon: Palette },
-    { name: 'Open Source', icon: Heart },
-    { name: 'Tech Innovation', icon: Lightbulb }
+    { name: 'Tech Innovation', icon: Lightbulb },
+    { name: 'Data Visualization', icon: Database },
+
   ];
 
   return (
     <div ref={containerRef} className="min-h-screen relative overflow-hidden">      
-      {/* Background - matching Contact.tsx */}
       <div className="absolute inset-0 bg-gradient-to-b from-custom-navy via-custom-black to-custom-dark">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,30,30,0.1),transparent)]"></div>
       </div>
@@ -197,31 +199,18 @@ const AboutDetails: React.FC = () => {
               <h2 className="text-4xl font-bold text-white mb-6 font-instrument-serif">
                 Professional Background
               </h2>
-              <div className="space-y-6 text-gray-300 font-bricolage">
-                <p className="text-lg leading-relaxed">
-                  I'm a passionate frontend developer with a strong foundation in modern web technologies 
-                  and a growing expertise in data science. My journey began with a fascination for creating 
-                  beautiful, intuitive user interfaces that solve real-world problems.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  While I'm still building my professional experience, I've dedicated countless hours to 
-                  mastering the craft of frontend development, from pixel-perfect designs to complex 
-                  interactive applications. Recently, I've expanded my skill set to include data analysis 
-                  and visualization, believing that the future of web development lies in data-driven experiences.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  My approach combines technical excellence with creative problem-solving, always keeping 
-                  the user experience at the center of every decision.
-                </p>
+
+              <div className="max-w-3xl mx-auto w-full">
+                <CodeBlock />
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="w-full h-96 rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 overflow-hidden">
                 <img
-                src="/srikar.jpg"
-                alt="Srikar"
-                className="w-full h-full object-cover"
+                  src="/srikar.jpg"
+                  alt="Srikar"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
