@@ -1,6 +1,6 @@
 import React from 'react';
 import {ExternalLink, Github,Code } from 'lucide-react';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from '../ui/SpotlightCard';
 import allProjectsData,{Project} from './projectsData';
 import { useNavigate } from 'react-router-dom';
 const Projects: React.FC = () => {

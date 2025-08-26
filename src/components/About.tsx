@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Code } from 'lucide-react';
 import me from '../assets/me.png'; 
-import TiltedCard from './TiltedCard';
-import ScrollVelocity from './ScrollVelocity';
+import TiltedCard from '../ui/TiltedCard';
+import ScrollVelocity from '../ui/ScrollVelocity';
 import { cn } from "../lib/utils"; // adjust path accordingly
 
 

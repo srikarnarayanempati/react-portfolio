@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import SideMenu from './SideMenu';
+import SideMenu from '../ui/SideMenu';
 
 const Navigation: React.FC = () => {
   const [, setScrolled] = useState(false);

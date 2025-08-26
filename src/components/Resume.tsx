@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Download, Award, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import resumePDF from '../assets/Srikar-Resume.pdf';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from '../ui/SpotlightCard';
 import fullstackImg from '../assets/certificates/development.jpg';
 import pythonImg from '../assets/certificates/Python.jpg';
 import sqlImg from '../assets/certificates/SQL.jpg';

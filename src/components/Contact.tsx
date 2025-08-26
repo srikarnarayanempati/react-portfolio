@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Github, Linkedin, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from '../ui/SpotlightCard';
 
 const Contact: React.FC = () => {
   const [state, handleSubmit] = useForm("mzzggpqg");

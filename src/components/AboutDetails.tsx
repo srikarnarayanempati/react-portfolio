@@ -12,9 +12,9 @@ import {
   Heart,
   Lightbulb
 } from 'lucide-react';
-import Skills from './Skills';
-import Timeline from '../components/Timeline';
-import MagicBento from './MagicBento';
+import Skills from '../ui/Skills';
+import Timeline from '../ui/Timeline';
+import MagicBento from '../ui/MagicBento';
 
 gsap.registerPlugin(ScrollTrigger);
 

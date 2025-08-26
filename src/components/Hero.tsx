@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Instagram } from 'lucide-react';
-import RippleGrid from './RippleGrid';
+import RippleGrid from '../ui/RippleGrid';
 import '@dotlottie/player-component'; 
 
 

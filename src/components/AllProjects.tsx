@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
 import allProjectsData,{Project} from './projectsData';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from '../ui/SpotlightCard';
 import { gsap } from 'gsap';
 
 const AllProjects: React.FC = () => {
