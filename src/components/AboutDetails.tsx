@@ -31,7 +31,6 @@ const AboutDetails: React.FC = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Page entrance animation
       gsap.fromTo(heroRef.current, 
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
@@ -39,7 +38,6 @@ const AboutDetails: React.FC = () => {
 
       const isMobile = window.innerWidth <= 768;
 
-      // Scroll-triggered animations for sections (simplified on mobile)
       sectionsRef.current.forEach((section, index) => {
         if (section) {
           if (isMobile) {
