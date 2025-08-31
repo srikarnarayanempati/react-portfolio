@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Github, Linkedin, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Send, Github, Linkedin, Instagram, Mail, MapPin,} from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 import SpotlightCard from '../ui/SpotlightCard';
 
@@ -145,7 +145,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
+              {/* <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 bg-custom-red rounded-full flex items-center justify-center">
                   <Phone size={20} className="text-white" />
                 </div>
@@ -153,7 +153,7 @@ const Contact: React.FC = () => {
                   <p className="text-gray-300 font-bricolage">Phone</p>
                   <p className="text-white font-space-mono">+91-8897960253</p>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 bg-custom-red rounded-full flex items-center justify-center">
