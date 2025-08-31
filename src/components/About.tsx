@@ -51,7 +51,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Lower Card under Image */}
-            <div className="h-[250px] w-full">
+            <div className="h-[250px] w-full hidden sm:block">
               <div
                 className={cn(
                   "group w-full h-full relative cursor-pointer overflow-hidden rounded-2xl p-6 border border-transparent dark:border-neutral-800 transition-all duration-500",
@@ -80,7 +80,7 @@ const About: React.FC = () => {
               <div className="text-white text-lg font-bricolage leading-relaxed">
                 <p className="mb-4">Not your average pick-me guy.</p>
                 <p className="mb-4">
-                  I'm a <span className="text-custom-red font-semibold">Frontend Developer</span>, designer, and tech enthusiast with a passion for building
+                  I'm a <span className="text-custom-red font-semibold italic">Frontend Developer</span>, designer, and tech enthusiast with a passion for building
                   interfaces that feel just right. I focus on clean code, pixel-perfect design, and user-first thinking.
                 </p>
                 <p className="mb-4">

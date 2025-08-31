@@ -11,15 +11,34 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToHero = () => {
+    const heroSection = document.getElementById("hero");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 relative z-20">
           {/* Brand Section */}
           <div className="flex items-start space-x-2">
-            <div className="font-instrument-serif text-2xl font-bold text-white mt-2">
-              Portfolio
+            <div
+              className="flex items-center space-x-2 cursor-pointer 
+                         backdrop-blur-md bg-white/10 rounded-full px-4 py-2 shadow-lg mt-4"
+              onClick={scrollToHero}
+            >
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-10 h-10 object-contain"
+              />
+              <div className="font-instrument-serif text-2xl font-bold text-white hidden sm:block">
+                Portfolio
+              </div>
             </div>
+
             {/* Lottie Animation */}
             <div className="relative">
               <div className="absolute -top-4 -left-2 w-32 h-32 overflow-visible pointer-events-none">
@@ -34,7 +53,6 @@ const Navigation: React.FC = () => {
             </div>
           </div>
 
-          {/* Side Menu Component */}
           <div className="flex items-center mt-2">
             <SideMenu />
           </div>
