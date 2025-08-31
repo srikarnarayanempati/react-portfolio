@@ -16,7 +16,7 @@ import {
 import Skills from '../ui/Skills';
 import Timeline from '../ui/Timeline';
 import MagicBento from '../ui/MagicBento';
-import CodeBlock from "../ui/CodeBlock"; // adjust import path
+import CodeBlock from "../ui/CodeBlock";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,14 +37,12 @@ const AboutDetails: React.FC = () => {
         { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
       );
 
-      // Check if mobile to reduce animations
       const isMobile = window.innerWidth <= 768;
 
       // Scroll-triggered animations for sections (simplified on mobile)
       sectionsRef.current.forEach((section, index) => {
         if (section) {
           if (isMobile) {
-            // Simple fade-in for mobile
             gsap.fromTo(section,
               { opacity: 0, y: 30 },
               {
@@ -58,12 +56,11 @@ const AboutDetails: React.FC = () => {
                   start: "top 90%",
                   end: "bottom 10%",
                   toggleActions: "play none none reverse",
-                  once: true // Only trigger once
+                  once: true
                 }
               }
             );
           } else {
-            // Full animation for desktop
             gsap.fromTo(section,
               { opacity: 0, y: 60 },
               {
@@ -83,7 +80,6 @@ const AboutDetails: React.FC = () => {
         }
       });
 
-      // Parallax effect for background elements (disabled on mobile)
       if (!isMobile) {
         gsap.to(".parallax-bg", {
           yPercent: -50,
@@ -107,8 +103,6 @@ const AboutDetails: React.FC = () => {
       sectionsRef.current.push(el);
     }
   };
-
-
 
 
   const timelineEvents = [
