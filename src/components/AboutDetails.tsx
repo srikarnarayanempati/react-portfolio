@@ -13,7 +13,7 @@ import {
   Heart,
   Lightbulb
 } from 'lucide-react';
-import Skills from '../ui/Skills';
+import { LogoLoop } from '../ui/LogoLoop';
 import Timeline from '../ui/Timeline';
 import MagicBento from '../ui/MagicBento';
 import CodeBlock from "../ui/CodeBlock";
@@ -101,6 +101,104 @@ const AboutDetails: React.FC = () => {
       sectionsRef.current.push(el);
     }
   };
+const techLogos = [
+  {
+    src: "https://static.cdnlogo.com/logos/p/3/python.svg",
+    title: "Python – Programming Language",
+    href: "https://www.python.org",
+  },
+  {
+    src: "https://cdn.simpleicons.org/javascript/F7DF1E",
+    title: "JavaScript – Programming Language",
+    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  {
+    src: "https://cdn.simpleicons.org/typescript/3178C6",
+    title: "TypeScript – Type-Safe JavaScript",
+    href: "https://www.typescriptlang.org",
+  },
+  {
+    src: "https://cdn.simpleicons.org/react/61DAFB",
+    title: "React – Frontend Framework",
+    href: "https://react.dev",
+  },
+  {
+    src: "https://i.postimg.cc/5y0cwFSG/Vitejs-logo-svg.png",
+    title: "Vite – Build Tool",
+    href: "https://vitejs.dev",
+  },
+  {
+    src: "https://static.cdnlogo.com/logos/h/84/html.svg",
+    title: "HTML – Markup Language",
+    href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  },
+  {
+    src: "https://static.cdnlogo.com/logos/c/31/css_800.png",
+    title: "CSS – Styling Language",
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  },
+  {
+    src: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+    title: "Tailwind CSS – CSS Framework",
+    href: "https://tailwindcss.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/bootstrap/7952B3",
+    title: "Bootstrap – CSS Framework",
+    href: "https://getbootstrap.com",
+  },
+  {
+    src: "https://i.postimg.cc/jqQQfFDG/pngwing-com.png",
+    title: "SQL – Database Language",
+    href: "https://en.wikipedia.org/wiki/SQL",
+  },
+  {
+    src: "https://cdn.simpleicons.org/mysql/4479A1",
+    title: "MySQL – Database Management",
+    href: "https://www.mysql.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/gsap/88CE02",
+    title: "GSAP – Animation Library",
+    href: "https://gsap.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/framer/0055FF",
+    title: "Framer Motion – Animation Library",
+    href: "https://www.framer.com/motion/",
+  },
+  {
+    src: "https://cdn.simpleicons.org/vercel/000000",
+    title: "Vercel – Deployment Platform",
+    href: "https://vercel.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/openai/FFFFFF",
+    title: "ChatGPT – AI Assistant",
+    href: "https://chat.openai.com",
+  },
+  {
+    src: "https://static.cdnlogo.com/logos/d/9/deepseek-icon.svg",
+    title: "DeepSeek – AI Model",
+    href: "https://www.deepseek.com",
+  },
+  {
+    src: "https://cdn.simpleicons.org/git/F05032",
+    title: "Git – Version Control",
+    href: "https://git-scm.com",
+  },
+  {
+    src: "https://i.postimg.cc/c1T5QHj7/github-white-icon.png",
+    title: "GitHub – Code Repository",
+    href: "https://github.com",
+  },
+  {
+    src: "https://static.cdnlogo.com/logos/v/82/visual-studio-code.svg",
+    title: "VS Code – Code Editor",
+    href: "https://code.visualstudio.com",
+  },
+];
+
 
 
   const timelineEvents = [
@@ -211,16 +309,32 @@ const AboutDetails: React.FC = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 relative z-10 skills-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 relative z-10 skills-section bg-transparent">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-white mb-12 text-center font-instrument-serif">
             Skills & Technologies I Know
           </h2>
-          <div className="flex justify-center">
-            <Skills />
+        </div>
+
+        <div className="w-full">
+          <div style={{ height: "120px", position: "relative", overflow: "hidden" }}>
+            <LogoLoop
+              logos={techLogos}
+              speed={60}
+              direction="left"
+              logoHeight={100}
+              gap={60}
+              pauseOnHover
+              scaleOnHover
+              fadeOut
+              fadeOutColor="transparent"
+              ariaLabel="Skills scrolling left"
+            />
           </div>
         </div>
       </section>
+
+
 
       {/* Timeline Section */}
       <section ref={addToRefs} className="py-16 relative z-10">
