@@ -29,7 +29,6 @@ body::-webkit-scrollbar {
   display: none;                 
 }
 
-/* Enhanced smooth scroll for About page */
 .about-smooth-scroll {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -40,7 +39,6 @@ body::-webkit-scrollbar {
   scroll-snap-align: start;
 }
 
-/* Custom scroll easing for About page */
 .about-smooth-scroll {
   transition: scroll-behavior 0.3s ease-in-out;
 }
@@ -75,6 +73,9 @@ body::-webkit-scrollbar {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+.glow {
+  box-shadow: 0 0 20px rgba(255, 30, 30, 0.6);
+}
 
 
 @layer base {

@@ -111,7 +111,7 @@ const About: React.FC = () => {
         <div className="mt-16 flex justify-center">
           <button
             onClick={() => navigate('/about-details')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 animate-glow"
+            className="group relative px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 glow"
           >
             <span className="relative z-10 flex items-center justify-center">
               Want More About Me

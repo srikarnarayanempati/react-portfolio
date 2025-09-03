@@ -101,7 +101,7 @@ const Resume: React.FC = () => {
       href={resumePDF}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative inline-block px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 animate-glow"
+      className="group relative inline-block px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 glow"
     >
       <span className="relative z-10 flex items-center justify-center">
         <Download className="mr-2 group-hover:translate-y-1 transition-transform" size={20} />

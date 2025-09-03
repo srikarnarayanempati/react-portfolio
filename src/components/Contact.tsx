@@ -113,7 +113,7 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={state.submitting}
-                  className="group relative w-full px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 animate-glow"
+                  className="group relative w-full px-8 py-4 bg-gradient-to-r from-custom-red to-custom-red-light rounded-lg font-bricolage font-semibold text-white shadow-lg hover:shadow-custom-red/25 transition-all duration-300 hover:scale-105 glow"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Send Message
