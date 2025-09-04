@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,30,30,0.1),transparent)]"></div>
       </div>
 
-      {/* Plasma Background */}
+      {/* Plasma Background
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center z-[1]">
         <Plasma
           color="#ff0000"
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
           opacity={0.5}
           mouseInteractive={false}
         />
-      </div>
+      </div> */}
 
       {/* Hero Content */}
       <div className="relative z-10 text-center max-w-3xl px-6">
