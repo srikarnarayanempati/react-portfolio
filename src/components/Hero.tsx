@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Instagram } from 'lucide-react';
 import Aurora from '../ui/Aurora';
+import { TypeAnimation } from 'react-type-animation';
 
 const Hero: React.FC = () => {
   const scrollToProjects = () => {
@@ -44,9 +45,17 @@ const Hero: React.FC = () => {
             <span className="block text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg font-bricolage">
               Srikar Empati
             </span>
-            <span className="block text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-custom-red to-custom-red-light bg-clip-text text-transparent font-bricolage font-medium">
-              Frontend Developer & Data Enthusiast
-            </span>
+            <TypeAnimation
+              sequence={[
+                'Frontend Developer', 1000, 
+                'Data Enthusiast', 1000,
+                'Video Editor', 1000,
+              ]}
+              wrapper="span"
+              cursor={true}
+              repeat={Infinity}
+              className="block text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-custom-red to-custom-red-light bg-clip-text text-transparent font-bricolage font-medium"
+            />
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8 font-bricolage">
             "I am your friendly neighbourhood coder — A front-end dev by day, and a video editor by night.

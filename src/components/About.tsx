@@ -49,24 +49,19 @@ const About: React.FC = () => {
                 }
               />
             </div>
-
-            {/* Lower Card under Image */}
+            {/* Alter Ego Card */}
             <div className="h-[250px] w-full hidden sm:block">
               <div
                 className={cn(
-                  "group w-full h-full relative cursor-pointer overflow-hidden rounded-2xl p-6 border border-transparent dark:border-neutral-800 transition-all duration-500",
+                  "group w-full h-full relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-500 bg-clip-padding",
                   "bg-[url(https://i.postimg.cc/4xmsgf2B/IMG-20250807-035613.png)] bg-cover bg-center bg-no-repeat",
-                  "before:bg-[url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif')] before:absolute before:inset-0 before:opacity-0 before:z-[-1]",
-                  "hover:bg-[url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif')]",
-                  "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
-                  "flex flex-col justify-end"
+                  "hover:bg-[url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif')]"
                 )}
               >
-                <div className="text relative z-50">
-                  <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
-                    Alter Ego
-                  </h1>
-                  <p className="font-normal text-base text-gray-50 relative my-4">
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 z-10 rounded-2xl" />
+                <div className="relative z-20 p-6 flex flex-col justify-end h-full">
+                  <h1 className="font-bold text-xl md:text-3xl text-gray-50">Alter Ego</h1>
+                  <p className="font-normal text-base text-gray-50 my-4">
                     Do not Hover on me !!
                   </p>
                 </div>
