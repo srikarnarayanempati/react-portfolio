@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,30,30,0.1),transparent)]"></div>
       </div>
 
-        {/* LiquidEther Background */}
+        {/* Aurora Background */}
         <div className="absolute inset-0 z-[1]">
           <Aurora
             colorStops={["#990000", "#CC0000", "#FF0000"]}
