@@ -25,14 +25,14 @@ const Navigation: React.FC = () => {
           {/* Brand Section */}
           <div className="flex items-start space-x-2">
             <div
-              className="flex items-center space-x-2 cursor-pointer 
-                         backdrop-blur-md bg-white/10 rounded-full px-4 py-2 shadow-lg mt-4"
+              className="group flex items-center space-x-2 cursor-pointer 
+                        backdrop-blur-md bg-white/10 rounded-full px-4 py-2 shadow-lg mt-4"
               onClick={scrollToHero}
             >
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 object-contain transform transition-transform duration-300 group-hover:-rotate-[20deg]"
               />
               <div className="font-instrument-serif text-2xl font-bold text-white hidden sm:block">
                 Portfolio
