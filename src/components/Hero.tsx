@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Instagram } from 'lucide-react';
-import LiquidEther from '../ui/LiquidEther';
+import Aurora from '../ui/Aurora';
 
 const Hero: React.FC = () => {
   const scrollToProjects = () => {
@@ -27,22 +27,11 @@ const Hero: React.FC = () => {
 
         {/* LiquidEther Background */}
         <div className="absolute inset-0 z-[1]">
-          <LiquidEther
-colors={['#E11D48', '#F43F5E', '#FB7185']}
-            mouseForce={20}
-            cursorSize={100}
-            isViscous={false}
-            viscous={30}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5} // lower = lighter performance
-            isBounce={false}
-            autoDemo={true}
-            autoSpeed={0.5}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
+          <Aurora
+            colorStops={["#990000", "#CC0000", "#FF0000"]}
+            blend={0.5}
+            amplitude={1.0}
+            speed={1.5}
           />
         </div>
 
