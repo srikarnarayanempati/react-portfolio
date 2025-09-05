@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const SideMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleNavClick = () => setOpen(false);
+  const goTo = (hash: string) => {
+    setOpen(false);
+    setTimeout(() => {
+      navigate(`/${hash}`);
+    }, 150);
+  };
 
   const textVariants: Variants = {
     hiddenUp: { y: -10, opacity: 0, transition: { duration: 0.3, ease: "easeInOut" } },
@@ -15,7 +21,6 @@ const SideMenu: React.FC = () => {
 
   return (
     <div>
-      {/* Button */}
       <motion.div
         className={`fixed top-4 right-4 w-[100px] h-[40px] rounded-full flex items-center justify-center cursor-pointer z-50 
                     transition-all duration-300 hover:scale-105 ${open ? "" : "bg-gradient-to-r from-custom-red to-custom-red-light"}`}
@@ -37,7 +42,6 @@ const SideMenu: React.FC = () => {
             borderRadius: "9999px",
           }}
         >
-          {/* MENU text */}
           <AnimatePresence mode="wait">
             {!open && (
               <motion.span
@@ -67,7 +71,6 @@ const SideMenu: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Panel */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -114,21 +117,21 @@ const SideMenu: React.FC = () => {
               exit={{ opacity: 0 }}
               className="p-12 flex flex-col gap-3 font-bold text-4xl md:text-4xl text-white font-bricolage"
             >
-              <a href="#hero" onClick={handleNavClick} className="hover:text-black">
+              <button onClick={() => goTo("#hero")} className="hover:text-black text-left">
                 HOME
-              </a>
-              <a href="#about" onClick={handleNavClick} className="hover:text-black">
+              </button>
+              <button onClick={() => goTo("#about")} className="hover:text-black text-left">
                 ABOUT
-              </a>
-              <a href="#projects" onClick={handleNavClick} className="hover:text-black">
+              </button>
+              <button onClick={() => goTo("#projects")} className="hover:text-black text-left">
                 PROJECTS
-              </a>
-              <a href="#resume" onClick={handleNavClick} className="hover:text-black">
+              </button>
+              <button onClick={() => goTo("#resume")} className="hover:text-black text-left">
                 RESUME
-              </a>
-              <a href="#contact" onClick={handleNavClick} className="hover:text-black">
+              </button>
+              <button onClick={() => goTo("#contact")} className="hover:text-black text-left">
                 CONTACT
-              </a>
+              </button>
             </motion.div>
           </motion.div>
         )}
