@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Instagram } from 'lucide-react';
-import Plasma from '../ui/Plasma';
+import LiquidEther from '../ui/LiquidEther';
 
 const Hero: React.FC = () => {
   const scrollToProjects = () => {
@@ -25,18 +25,26 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,30,30,0.1),transparent)]"></div>
       </div>
 
-      {/* Plasma Background */}
-<div className="absolute inset-0 z-[1]">
-  <Plasma
-    color="#ff0000"
-    speed={0.4}
-    direction="forward"
-    scale={1.0}
-    opacity={0.5}
-    mouseInteractive={false} // turn off for performance
-  />
-</div>
-
+        {/* LiquidEther Background */}
+        <div className="absolute inset-0 z-[1]">
+          <LiquidEther
+colors={['#E11D48', '#F43F5E', '#FB7185']}
+            mouseForce={20}
+            cursorSize={100}
+            isViscous={false}
+            viscous={30}
+            iterationsViscous={32}
+            iterationsPoisson={32}
+            resolution={0.5} // lower = lighter performance
+            isBounce={false}
+            autoDemo={true}
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
+          />
+        </div>
 
 
       {/* Hero Content */}

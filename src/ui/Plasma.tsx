@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface PlasmaProps {
   color?: string;
@@ -10,194 +9,192 @@ interface PlasmaProps {
   mouseInteractive?: boolean;
 }
 
-const hexToRgb = (hex: string): [number, number, number] => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) return [1, 0.5, 0.2];
-  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
-};
-
-const vertex = `#version 300 es
-precision highp float;
-in vec2 position;
-in vec2 uv;
-out vec2 vUv;
-void main() {
-  vUv = uv;
-  gl_Position = vec4(position, 0.0, 1.0);
-}
-`;
-
-const fragment = `#version 300 es
-precision highp float;
-uniform vec2 iResolution;
-uniform float iTime;
-uniform vec3 uCustomColor;
-uniform float uUseCustomColor;
-uniform float uSpeed;
-uniform float uDirection;
-uniform float uScale;
-uniform float uOpacity;
-uniform vec2 uMouse;
-uniform float uMouseInteractive;
-out vec4 fragColor;
-
-void mainImage(out vec4 o, vec2 C) {
-  vec2 center = iResolution.xy * 0.5;
-  C = (C - center) / uScale + center;
-  
-  vec2 mouseOffset = (uMouse - center) * 0.0002;
-  C += mouseOffset * length(C - center) * step(0.5, uMouseInteractive);
-  
-  float i, d, z, T = iTime * uSpeed * uDirection;
-  vec3 O, p, S;
-
-  for (vec2 r = iResolution.xy, Q; ++i < 60.; O += o.w/d*o.xyz) {
-    p = z*normalize(vec3(C-.5*r,r.y)); 
-    p.z -= 4.; 
-    S = p;
-    d = p.y-T;
-    
-    p.x += .4*(1.+p.y)*sin(d + p.x*0.1)*cos(.34*d + p.x*0.05); 
-    Q = p.xz *= mat2(cos(p.y+vec4(0,11,33,0)-T)); 
-    z+= d = abs(sqrt(length(Q*Q)) - .25*(5.+S.y))/3.+8e-4; 
-    o = 1.+sin(S.y+p.z*.5+S.z-length(S-p)+vec4(2,1,0,8));
-  }
-  
-  o.xyz = tanh(O/1e4);
-}
-
-bool finite1(float x){ return !(isnan(x) || isinf(x)); }
-vec3 sanitize(vec3 c){
-  return vec3(
-    finite1(c.r) ? c.r : 0.0,
-    finite1(c.g) ? c.g : 0.0,
-    finite1(c.b) ? c.b : 0.0
-  );
-}
-
-void main() {
-  vec4 o = vec4(0.0);
-  mainImage(o, gl_FragCoord.xy);
-  vec3 rgb = sanitize(o.rgb);
-  
-  float intensity = (rgb.r + rgb.g + rgb.b) / 3.0;
-  vec3 customColor = intensity * uCustomColor;
-  vec3 finalColor = mix(rgb, customColor, step(0.5, uUseCustomColor));
-  
-  float alpha = length(rgb) * uOpacity;
-  fragColor = vec4(finalColor, alpha);
-}`;
-
-export const Plasma: React.FC<PlasmaProps> = ({
-  color = '#ffffff',
+const Plasma: React.FC<PlasmaProps> = ({
+  color = '#6366f1',
   speed = 1,
   direction = 'forward',
   scale = 1,
-  opacity = 1,
+  opacity = 0.8,
   mouseInteractive = true
 }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const mousePos = useRef({ x: 0, y: 0 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>();
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const timeRef = useRef(0);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  // Optimized plasma calculation with reduced complexity
+  const calculatePlasma = (x: number, y: number, time: number, mouseX: number, mouseY: number) => {
+    const scaledX = x * 0.01 * scale;
+    const scaledY = y * 0.01 * scale;
+    
+    // Simplified plasma equations - much faster than original
+    const wave1 = Math.sin(scaledX * 2 + time);
+    const wave2 = Math.sin(scaledY * 2 + time * 0.7);
+    const wave3 = Math.sin((scaledX + scaledY) * 1.5 + time * 0.5);
+    
+    // Mouse interaction (simplified)
+    let mouseEffect = 0;
+    if (mouseInteractive) {
+      const dx = x - mouseX;
+      const dy = y - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      mouseEffect = Math.sin(distance * 0.02 - time * 2) * 0.3;
+    }
+    
+    return (wave1 + wave2 + wave3 + mouseEffect) * 0.25 + 0.5;
+  };
+
+  // Convert hex to RGB
+  const hexToRgb = (hex: string) => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!result) return [102, 102, 255];
+    return [
+      parseInt(result[1], 16),
+      parseInt(result[2], 16),
+      parseInt(result[3], 16)
+    ];
+  };
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const useCustomColor = color ? 1.0 : 0.0;
-    const customColorRgb = color ? hexToRgb(color) : [1, 1, 1];
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0;
+    // Set canvas size with reduced resolution for better performance
+    const updateCanvasSize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5); // Reduced DPR for performance
+      
+      // Use lower resolution on mobile
+      const isMobile = window.innerWidth < 768;
+      const resolutionScale = isMobile ? 0.5 : 0.75; // Even lower resolution
+      
+      const width = Math.floor(rect.width * dpr * resolutionScale);
+      const height = Math.floor(rect.height * dpr * resolutionScale);
+      
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      
+      setDimensions({ width, height });
+    };
 
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
-    });
-    const gl = renderer.gl;
-    const canvas = gl.canvas as HTMLCanvasElement;
-    canvas.style.display = 'block';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    containerRef.current.appendChild(canvas);
+    updateCanvasSize();
+    window.addEventListener('resize', updateCanvasSize);
 
-    const geometry = new Triangle(gl);
-
-    const program = new Program(gl, {
-      vertex: vertex,
-      fragment: fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uCustomColor: { value: new Float32Array(customColorRgb) },
-        uUseCustomColor: { value: useCustomColor },
-        uSpeed: { value: speed * 0.4 },
-        uDirection: { value: directionMultiplier },
-        uScale: { value: scale },
-        uOpacity: { value: opacity },
-        uMouse: { value: new Float32Array([0, 0]) },
-        uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 }
-      }
-    });
-
-    const mesh = new Mesh(gl, { geometry, program });
-
+    // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
       if (!mouseInteractive) return;
-      const rect = containerRef.current!.getBoundingClientRect();
-      mousePos.current.x = e.clientX - rect.left;
-      mousePos.current.y = e.clientY - rect.top;
-      const mouseUniform = program.uniforms.uMouse.value as Float32Array;
-      mouseUniform[0] = mousePos.current.x;
-      mouseUniform[1] = mousePos.current.y;
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current.x = (e.clientX - rect.left) * (dimensions.width / rect.width);
+      mouseRef.current.y = (e.clientY - rect.top) * (dimensions.height / rect.height);
     };
 
     if (mouseInteractive) {
-      containerRef.current.addEventListener('mousemove', handleMouseMove);
+      canvas.addEventListener('mousemove', handleMouseMove);
     }
 
-    const setSize = () => {
-      const rect = containerRef.current!.getBoundingClientRect();
-      const width = Math.max(1, Math.floor(rect.width));
-      const height = Math.max(1, Math.floor(rect.height));
-      renderer.setSize(width, height);
-      const res = program.uniforms.iResolution.value as Float32Array;
-      res[0] = gl.drawingBufferWidth;
-      res[1] = gl.drawingBufferHeight;
-    };
+    // Animation loop with throttling
+    let lastFrameTime = 0;
+    const targetFPS = 30; // Reduced FPS for better performance
+    const frameInterval = 1000 / targetFPS;
 
-    const ro = new ResizeObserver(setSize);
-    ro.observe(containerRef.current);
-    setSize();
+    const animate = (currentTime: number) => {
+      if (currentTime - lastFrameTime >= frameInterval) {
+        // Calculate time based on direction
+        let timeSpeed = speed * 0.002;
+        if (direction === 'reverse') {
+          timeSpeed *= -1;
+        } else if (direction === 'pingpong') {
+          timeSpeed *= Math.sin(currentTime * 0.001);
+        }
+        
+        timeRef.current += timeSpeed;
+        
+        const { width, height } = dimensions;
+        if (width === 0 || height === 0) return;
 
-    let raf = 0;
-    const t0 = performance.now();
-    const loop = (t: number) => {
-      let timeValue = (t - t0) * 0.001;
+        // Create image data
+        const imageData = ctx.createImageData(width, height);
+        const data = imageData.data;
+        const [r, g, b] = hexToRgb(color);
 
-      if (direction === 'pingpong') {
-        const cycle = Math.sin(timeValue * 0.5) * directionMultiplier;
-        (program.uniforms.uDirection as any).value = cycle;
+        // Optimized pixel calculation with reduced sampling
+        const step = Math.max(1, Math.floor((width + height) / 400)); // Dynamic step based on size
+        
+        for (let y = 0; y < height; y += step) {
+          for (let x = 0; x < width; x += step) {
+            const plasmaValue = calculatePlasma(
+              x, y, timeRef.current, 
+              mouseRef.current.x, mouseRef.current.y
+            );
+            
+            const intensity = Math.pow(plasmaValue, 1.5); // Gamma correction for better visuals
+            const alpha = intensity * opacity * 255;
+            
+            // Fill block instead of single pixel for better performance
+            for (let dy = 0; dy < step && y + dy < height; dy++) {
+              for (let dx = 0; dx < step && x + dx < width; dx++) {
+                const index = ((y + dy) * width + (x + dx)) * 4;
+                data[index] = r * intensity;     // Red
+                data[index + 1] = g * intensity; // Green
+                data[index + 2] = b * intensity; // Blue
+                data[index + 3] = alpha;         // Alpha
+              }
+            }
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        lastFrameTime = currentTime;
       }
-
-      (program.uniforms.iTime as any).value = timeValue;
-      renderer.render({ scene: mesh });
-      raf = requestAnimationFrame(loop);
+      
+      animationRef.current = requestAnimationFrame(animate);
     };
-    raf = requestAnimationFrame(loop);
+
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      if (mouseInteractive && containerRef.current) {
-        containerRef.current.removeEventListener('mousemove', handleMouseMove);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
       }
-      try {
-        containerRef.current?.removeChild(canvas);
-      } catch {}
+      window.removeEventListener('resize', updateCanvasSize);
+      if (mouseInteractive) {
+        canvas.removeEventListener('mousemove', handleMouseMove);
+      }
     };
-  }, [color, speed, direction, scale, opacity, mouseInteractive]);
+  }, [color, speed, direction, scale, opacity, mouseInteractive, dimensions]);
 
-  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
+  return (
+    <div className="w-full h-full relative overflow-hidden">
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          mixBlendMode: 'screen', // Creates nice blending effect
+          filter: 'blur(0.5px)' // Slight blur to hide pixelation from reduced resolution
+        }}
+      />
+      {/* Fallback gradient for very low-end devices */}
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: `radial-gradient(circle at center, ${color}40, transparent 70%)`,
+          animation: 'pulse 4s ease-in-out infinite'
+        }}
+      />
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+        }
+      `}</style>
+    </div>
+  );
 };
 
 export default Plasma;
