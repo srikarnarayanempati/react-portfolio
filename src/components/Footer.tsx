@@ -13,7 +13,14 @@ const Footer: React.FC = () => {
           <span className="text-gray-300 font-bricolage">and</span>
           <Code className="text-custom-blue-accent" size={20} />
           <span className="text-gray-300 font-bricolage">by</span>
-          <span className="text-white font-instrument-serif font-bold">Srikar</span>
+          <a 
+            href="https://github.com/srikarnarayanempati" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-white font-instrument-serif font-bold cursor-pointer hover:underline"
+          >
+            Srikar
+          </a>
         </div>
 
         <p className="text-gray-400 text-sm font-space-mono">
